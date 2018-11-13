@@ -1,0 +1,12 @@
+./idea
+./idea/
+./idea/*
+*/idea/*
+idea/
+.idea/misc.xml
+.idea/modules.xml
+.idea/untitled2.iml
+.idea/workspace.xml
+__pycache__/
+venv/
+
