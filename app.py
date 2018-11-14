@@ -4,12 +4,19 @@ from flask_restful import Resource, Api
 
 from flask_sqlalchemy import SQLAlchemy
 
+from flask_migrate import Migrate, MigrateCommand
+from flask_script import Manager
+
 app = Flask(__name__)
-app.config['DEBUG'] = True
-api = Api(app)
+app.config.from_object(Configuration)
 
 db = SQLAlchemy(app)
-app.config.from_object(Configuration)
+api = Api(app)
+
+migrate=Migrate(app,db)
+manager=Manager(app)
+
+manager.add_command('db',MigrateCommand)
 
 
 class HelloWorld(Resource):
@@ -18,6 +25,3 @@ class HelloWorld(Resource):
 
 
 api.add_resource(HelloWorld, '/rest1')
-
-
-

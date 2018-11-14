@@ -4,7 +4,7 @@ import re
 
 
 def slugify(s):
-    pattern = r'[^w+]'
+    pattern = r'[^\w+]'
     return re.sub(pattern, '-', s)
 
 
@@ -25,3 +25,16 @@ class Post(db.Model):
 
     def __repr__(self):
         return '<Post id: {}, title: {}>'.format(self.id, self.title)
+
+
+class Tag(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100))
+    slug = db.Column(db.String(100), unique=True)
+
+    def __init__(self, *args, **kwargs):
+        super(Tag, self).__init__(*args, **kwargs)
+        self.slug = slugify(self.name)
+
+    def __repr__(self):
+        return '<Tag id: {}, name: {}>'.format(self.id, self.name)

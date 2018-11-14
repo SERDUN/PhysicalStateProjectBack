@@ -1,5 +1,6 @@
 ./idea
 ./idea/
+./idea/vcs.xml
 ./idea/*
 */idea/*
 idea/
@@ -9,4 +10,5 @@ idea/
 .idea/workspace.xml
 __pycache__/
 venv/
+vcs.xml
 
