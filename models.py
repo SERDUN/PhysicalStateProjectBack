@@ -8,7 +8,15 @@ def slugify(s):
     return re.sub(pattern, '-', s)
 
 
+post_tags = db.Table('post_tags',
+                     db.Column('post_id', db.Integer, db.ForeignKey('post.id')),
+                     db.Column('tag_id', db.Integer, db.ForeignKey('tag.id')))
+
+
 class Post(db.Model):
+    test = ""
+    tags = db.relationship('Tag', secondary=post_tags, backref=db.backref('posts', lazy='dynamic'))
+
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(140))
     slug = db.Column(db.String(140), unique=True)

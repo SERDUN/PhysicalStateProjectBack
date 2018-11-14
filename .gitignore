@@ -11,4 +11,9 @@ idea/
 __pycache__/
 venv/
 vcs.xml
+.idea/codeStyles/
+.idea/dataSources.local.xml
+.idea/dataSources.xml
+.idea/dataSources/
+.idea/dbnavigator.xml
 
